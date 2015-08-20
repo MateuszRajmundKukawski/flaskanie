@@ -1,0 +1,76 @@
+{% extends "template.html" %}
+{% block content %}
+
+
+
+
+<body>
+        <h1>{{ config.SITE_NAME }}:</h1>
+
+        <!-- formularz dodawania zadania -->
+        <form class="add-form" method="POST" action="{{ url_for('index') }}">
+            <input type="text" name="zadanie" value=""/>
+            <button type="submit">Dodaj zadanie</button>
+        </form>
+
+        <!-- informacje o sukcesie lub błędzie -->
+        <p>
+            {% if error %}
+                <strong class="error">Błąd: {{ error }}</strong>
+            {% endif %}
+
+            {% for message in get_flashed_messages() %}
+                <strong class="success">{{ message }}</strong>
+            {% endfor %}
+        </p>
+
+
+        <table>
+            <!-- wypisujemy kolejno wszystkie zdania -->
+            {% for zadanie in zadania %}
+
+            <!-- wyróżnienie zadań zakończonych -->
+            {% if zadanie.zrobione %}
+                        <span class="done">
+                    {% endif %}
+
+            <tr>
+                <td>{{ zadanie.id }}</td>
+                <td>{{ zadanie.zadanie }}</td>
+                <td><em>{{ zadanie.data_pub }}</em></td>
+                        </span>
+
+            <td>
+                <form method="POST" action="{{ url_for('usun') }}">
+                    <!-- wysyłamy jedynie informacje o id zadania -->
+                    <input type="hidden" name="id" value="{{ zadanie.id }}"/>
+                    <button type="submit">USUN</bu></button>
+                </form>
+            </td>
+
+
+            <!-- wyróżnienie zadań zakończonych -->
+            {% if zadanie.zrobione %}
+
+                {% endif %}
+
+                <!-- formularz zmiany statusu zadania -->
+                {% if not zadanie.zrobione %}
+                <td>
+                    <form method="POST" action="{{ url_for('zrobione') }}">
+                        <!-- wysyłamy jedynie informacje o id zadania -->
+                        <input type="hidden" name="id" value="{{ zadanie.id }}"/>
+                        <button type="submit">Wykonane</button>
+                    </form>
+                </td>
+
+
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </table>
+
+
+</body>
+
+{% endblock%}

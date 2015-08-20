@@ -1,0 +1,28 @@
+{% extends "template.html" %}
+{% block content %}
+KROWA<br>
+
+{% for i in range(startloop,endloop) %}
+
+{% set pnr = loop.index0 %}
+<table>
+    <tr><td>{{ pnr+1 }}</td><td>{{ zadania[i].id }}</td><td>{{ zadania[i].zadanie }}</tr></td>
+
+    <br>
+</table>
+
+{% endfor %}
+{% if  tooo  %}
+<form method="POST" action="{{ url_for('index') }}">
+    {% else %}
+<form method="POST" action="{{ url_for('index2') }}">
+    {% endif %}
+                            <!-- wysyłamy jedynie informacje o id zadania -->
+                            <input type="hidden" name="id" value="kot"/>
+                            <button type="submit">Odpal1</button>
+                        </form>
+
+
+
+
+{% endblock %}

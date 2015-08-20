@@ -1,0 +1,43 @@
+/* todo/static/style.css */
+
+body { margin-top: 20px; background-color: lightgreen; }
+h1, p { margin-left: 20px; }
+.add-form { margin-left: 20px; }
+ol { text-align: left; }
+em { font-size: 11px; margin-left: 10px; }
+form { display: inline-block; margin-bottom: 0;}
+input[name="zadanie"] { width: 300px; }
+input[name="zadanie"]:focus {
+    border-color: blue;
+    border-radius: 5px;
+}
+li { margin-bottom: 5px; }
+button {
+    padding: 5;
+    cursor: pointer;
+    font-size: 11px;
+    background: white;
+    border: black;
+    color: blue;
+    border-style: solid;
+    border-width: 3px;
+}
+.error { color: red; }
+.success { color: green; }
+.done { : line-through; }
+table {
+        table-layout:auto;
+        padding:5px;
+        background-color:#DFF;
+        width:74%;
+        border:1px dashed #000;
+        margin-left: auto;
+        margin-right: auto;
+
+      }
+
+      table tbody tr td {
+        border:1px dashed #000;
+        text-align:center;
+        padding:5px;
+      }

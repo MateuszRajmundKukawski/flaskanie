@@ -1,0 +1,23 @@
+{% extends "template.html" %}
+{% block content %}
+<!--<div class="jumbo">-->
+<div class="jumbo">
+    <h2>Welcome to Flask!</h2>
+    <br>
+    <p>Click <a href="/welcome">here</a>to go to welcome page</p>
+<!--</div>-->
+    </div>
+
+ <p>
+            {% for message in get_flashed_messages() %}
+                {{ message }}
+            {% endfor %}
+
+     <br><br>
+        {{ get_flashed_messages()[0] }}
+
+        </p>
+{% endblock %}
+{% block foo %}
+<p>to jest foo</p>
+{% endblock %}
